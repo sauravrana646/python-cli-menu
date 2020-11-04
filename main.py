@@ -11,11 +11,11 @@ def main():
         1 : AWS 
         0 : Exit"""
               )
-        choice = int(input("\nEnter your choice : "))
+        choice = input("\nEnter your choice : ")
 
-        if choice == 1:
+        if choice == '1':
             aws.aws()
-        elif choice == 0:
+        elif choice == '0':
             exit()
         os.system("clear")
 
