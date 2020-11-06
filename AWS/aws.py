@@ -1,6 +1,7 @@
 import os
 from AWS.ec2 import ec2
 from AWS.s3 import  s3
+from AWS.cloudfront import cloudfront
 from welcome import welcome
 from colorama import Fore, Back, Style
 from subprocess import run, PIPE
@@ -33,13 +34,14 @@ def aws():
         1. EC2
         2. S3
         3. Cloundfront
-        4. 
         9. Go back""")
         choice = input("\nEnter your choice : ")
         if choice == '1' : 
             ec2()
         if choice == '2' : 
             s3()
+        if choice == '3' :
+            cloudfront()
         elif choice == '9':
             return
         os.system("clear")

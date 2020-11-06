@@ -8,14 +8,14 @@
         "Quantity": 1,
         "Items": [
             {
-                "Id": "BUCKET_NAME_HERE.s3.amazonaws.com-mytask6",
-                "DomainName": "BUKCET_NAME_HERE.s3.amazonaws.com",
+                "Id": "BUCKET_NAME_HERE.s3.amazonaws.com-BUCKET_NAME_HERE",
+                "DomainName": "BUCKET_NAME_HERE.s3.amazonaws.com",
                 "OriginPath": "",
                 "CustomHeaders": {
                     "Quantity": 0
                 },
                 "S3OriginConfig": {
-                    "OriginAccessIdentity": "origin-access-identity/cloudfront/ORIGIN_ACCESS_IDENTITY_HERE"
+                    "OriginAccessIdentity": "ORIGIN_ACCESS_IDENTITY_HERE"
                 }
             }
         ]
