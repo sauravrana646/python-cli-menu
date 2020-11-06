@@ -49,7 +49,7 @@ def create_OAI(caller_reference,comment):
 def cloudfront():
     while True : 
         system("clear")
-        print(welcome("AWS EC2"))
+        print(welcome("AWS CLOUDFRONT"))
         print("""Select from below : 
         1. Create Origin Access Identity (Recommended if making s3 as Origin)
         2. Create Cloudfront Distribution

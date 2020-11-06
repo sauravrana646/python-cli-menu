@@ -15,5 +15,3 @@ def modify_conf(origin,root_object="",OAI=""):
    
     with open("AWS/new_conf.json" , "w") as f:
         f.write(data)
-
-modify_conf("testname")
