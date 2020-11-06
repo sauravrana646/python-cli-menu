@@ -1,4 +1,4 @@
-import aws
+from AWS import aws
 import os
 from welcome import welcome
 
