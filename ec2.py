@@ -83,11 +83,9 @@ def ec2():
         4. Add ingress rule
         5. Create EBS Volume
         6. Attach EBS Volume
-        7. Create Snapshot of Volume
         9. Go back""")
         choice = input("\nEnter your choice : ")
-        if choice == '1' : 
-        
+        if choice == '1' :
             image_id = input("\nEnter Image ID : ")
             count = input("Enter no. of instances to launch : ")
             security_group = input("Enter the security group ids : ")
