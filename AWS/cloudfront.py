@@ -27,7 +27,7 @@ def create_cloudfront_dist(origin_name,root_object="",oai_id=""):
             print(Fore.GREEN + f"\nSucccess\n\n{up_pol_out.stdout.decode()}")
             print(Style.RESET_ALL)
         else :
-            print(Fore.RED + f"\nCouldn't authenticate\n\nError : \n{up_pol_out.stderr.decode()}")
+            print(Fore.RED + f"\nCouldn't update\n\nError : \n{up_pol_out.stderr.decode()}")
             print(Style.RESET_ALL)
         run(f"rm -f {bpath_dir}",shell=True)
     else : 
