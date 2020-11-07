@@ -4,7 +4,7 @@ from welcome import welcome
 from colorama import Fore, Back, Style
 
 def attach_ebs(instance_id,volume_id,device):
-    attach_out = run(f"aws ec2 attach-volume --device {device} --instance-id {instance_id} --volume-id {volume_id}",capture_output=True)
+    attach_out = run(f"aws ec2 attach-volume --device {device} --instance-id {instance_id} --volume-id {volume_id}",shell=True,capture_output=True)
     if attach_out.returncode == 0 :
         print(Fore.GREEN + f"\nSuccess\n{attach_out.stdout.decode()}")
         print(Style.RESET_ALL)
@@ -15,7 +15,7 @@ def attach_ebs(instance_id,volume_id,device):
     input("Enter to continue....")
 
 def create_ebs_volume(availability_zone,size,volume_type) : 
-    ebs_out = run(f"aws ec2 create-volume --availability-zone {availability_zone} --size {size} --volume-type {volume_type}",capture_output=True)
+    ebs_out = run(f"aws ec2 create-volume --availability-zone {availability_zone} --size {size} --volume-type {volume_type}",shell=True,capture_output=True)
     if ebs_out.returncode == 0 :
         print(Fore.GREEN + f"\nSuccess\n{ebs_out.stdout.decode()}")
         print(Style.RESET_ALL)
@@ -27,7 +27,7 @@ def create_ebs_volume(availability_zone,size,volume_type) :
 
 
 def add_ingress_rule(sg_id,protocol,toport,cidr):
-    ingress_out = run(f"aws ec2 authorize-security-group-ingress --group-id {sg_id} --protocol {protocol} --port {toport} --cidr {cidr}",capture_output=True)
+    ingress_out = run(f"aws ec2 authorize-security-group-ingress --group-id {sg_id} --protocol {protocol} --port {toport} --cidr {cidr}",shell=True,capture_output=True)
     if ingress_out.returncode == 0 :
         print(Fore.GREEN + f"\nSuccessfully Added Rule")
         print(Style.RESET_ALL)
@@ -38,7 +38,7 @@ def add_ingress_rule(sg_id,protocol,toport,cidr):
     input("Enter to continue....")
 
 def create_security_group(sg_name,description):
-    sg_out = run(f"aws ec2 create-security-group --group-name {sg_name} --description \"{description}\"",capture_output=True)
+    sg_out = run(f"aws ec2 create-security-group --group-name {sg_name} --description \"{description}\"",shell=True,capture_output=True)
     if sg_out.returncode == 0 :
         print(Fore.GREEN + f"\n\nSuccess\n{sg_out.stdout.decode()}")
         print(Style.RESET_ALL)
@@ -51,7 +51,7 @@ def create_security_group(sg_name,description):
     input("Enter to continue....")
 
 def create_key_pair(key_name):
-    key_out = run(f"aws ec2 create-key-pair --key-name {key_name}",capture_output=True)
+    key_out = run(f"aws ec2 create-key-pair --key-name {key_name}",shell=True,capture_output=True)
     if key_out.returncode == 0 :
         print(Fore.GREEN + f"\n\nSuccess\n{key_out.stdout.decode()}")
         print(Style.RESET_ALL)
@@ -63,7 +63,7 @@ def create_key_pair(key_name):
 def launch_instance(image_id,security_group,key_pair,count,instance_type):
     print("Launching Container")
     cmd = f"aws ec2 run-instances --image-id {image_id} --key-name {key_pair} --security-group-ids {security_group} --count {count} --instance-type {instance_type}"
-    launch_out = run(f"{cmd}",capture_output=True)
+    launch_out = run(f"{cmd}",shell=True,capture_output=True)
     if launch_out.returncode == 0 :
         print(Fore.GREEN + f"\n\nSuccess\n{launch_out.stdout.decode()}")
         print(Style.RESET_ALL)

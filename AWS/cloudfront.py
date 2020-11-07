@@ -8,28 +8,28 @@ from colorama import Fore, Back, Style
 def create_cloudfront_dist(origin_name,root_object="",oai_id=""):
     modify_conf(origin_name,root_object,oai_id)
     path_dir = path.abspath(r"AWS\new_conf.json")
-    cldf_out = run(f"aws cloudfront create-distribution --distribution-config file://{path_dir} ",capture_output=True)
+    cldf_out = run(f"aws cloudfront create-distribution --distribution-config file://{path_dir} ",shell=True, capture_output=True)
     if cldf_out.returncode == 0:
         print(Fore.GREEN + f"\nAuthentication succcess\n\n{cldf_out.stdout.decode()}")
         print(Style.RESET_ALL)
     else :
         print(Fore.RED + f"\nCouldn't authenticate\n\nError : \n{cldf_out.stderr.decode()}")
         print(Style.RESET_ALL)
-    run(f"rm -f {path_dir}")
+    run(f"rm -f {path_dir}",shell=True)
 
     up_policy = input(Fore.YELLOW + "Do you want to update bucket policy for s3? (Recommended if s3 is origin) [y/n]: ")
     print(Style.RESET_ALL)
     if up_policy.lower() == 'y' :
         update_policy(origin_name,oai_id)
         bpath_dir = path.abspath(r"AWS\new_bucket_policy.json")
-        up_pol_out = run(f"aws s3api put-bucket-policy --bucket {origin_name} --policy file://{bpath_dir}",capture_output=True)
+        up_pol_out = run(f"aws s3api put-bucket-policy --bucket {origin_name} --policy file://{bpath_dir}",shell=True,capture_output=True)
         if up_pol_out.returncode == 0:
             print(Fore.GREEN + f"\nSucccess\n\n{up_pol_out.stdout.decode()}")
             print(Style.RESET_ALL)
         else :
             print(Fore.RED + f"\nCouldn't authenticate\n\nError : \n{up_pol_out.stderr.decode()}")
             print(Style.RESET_ALL)
-        run(f"rm -f {bpath_dir}")
+        run(f"rm -f {bpath_dir}",shell=True)
     else : 
         print("\nAll Done\n")
 
@@ -37,7 +37,7 @@ def create_cloudfront_dist(origin_name,root_object="",oai_id=""):
 
 
 def create_OAI(caller_reference,comment):
-    oai_out = run(f"aws cloudfront create-cloud-front-origin-access-identity --cloud-front-origin-access-identity-config CallerReference=\"{caller_reference}\",Comment=\"{comment}\"",capture_output=True)
+    oai_out = run(f"aws cloudfront create-cloud-front-origin-access-identity --cloud-front-origin-access-identity-config CallerReference=\"{caller_reference}\",Comment=\"{comment}\"",shell=True,capture_output=True)
     if oai_out.returncode == 0 :
         print(Fore.GREEN + f"\n\nSuccess\n{oai_out.stdout.decode()}")
         print(Style.RESET_ALL)

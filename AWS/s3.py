@@ -4,7 +4,7 @@ from welcome import welcome
 from colorama import Fore, Back, Style
 
 def put_object(bucket_name,key,body,acl) :
-    put_out = run(f"aws s3api put-object --bucket {bucket_name} --acl {acl} --key {key} --body \"{body}\"",capture_output=True)
+    put_out = run(f"aws s3api put-object --bucket {bucket_name} --acl {acl} --key {key} --body \"{body}\"",shell=True,capture_output=True)
     if put_out.returncode == 0 :
         print(Fore.GREEN + f"\nSuccess\n{put_out.stdout.decode()}")
         print(Style.RESET_ALL)
@@ -15,7 +15,7 @@ def put_object(bucket_name,key,body,acl) :
     input("Enter to continue....")
 
 def public_acess_block(bucket_name,new_acl,any_acl,app,caa):
-    block_out = run(f"aws s3api put-public-access-block --bucket {bucket_name} --public-access-block-configuration \"BlockPublicAcls={new_acl},IgnorePublicAcls={any_acl},BlockPublicPolicy={app},RestrictPublicBuckets={caa}\"",capture_output=True)
+    block_out = run(f"aws s3api put-public-access-block --bucket {bucket_name} --public-access-block-configuration \"BlockPublicAcls={new_acl},IgnorePublicAcls={any_acl},BlockPublicPolicy={app},RestrictPublicBuckets={caa}\"",shell=True,capture_output=True)
     if block_out.returncode == 0 :
         print(Fore.GREEN + f"\nSuccess\n{block_out.stdout.decode()}")
         print(Style.RESET_ALL)
@@ -26,7 +26,7 @@ def public_acess_block(bucket_name,new_acl,any_acl,app,caa):
     input("Enter to continue....")
 
 def create_bucket(bucket_name,region_name):
-    bucket_out = run(f"aws s3api create-bucket --bucket {bucket_name} --region {region_name} --create-bucket-configuration LocationConstraint={region_name}",capture_output=True)
+    bucket_out = run(f"aws s3api create-bucket --bucket {bucket_name} --region {region_name} --create-bucket-configuration LocationConstraint={region_name}",shell=True,capture_output=True)
     if bucket_out.returncode == 0 :
         print(Fore.GREEN + f"\nSuccess\n{bucket_out.stdout.decode()}")
         print(Style.RESET_ALL)
