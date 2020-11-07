@@ -34,7 +34,8 @@ def delete_partition(part_number):
         print(Fore.RED + f"\nCouldn't delete partition\n\nError : \n{delpart_out.stderr.decode()}")
         print(Style.RESET_ALL)
     input("\nPress ENTER to continue...")
-while True:
+def partition():    
+    while True:
         system("clear")
         print(welcome("LINUX PARTITIONS"))
         print("""Select from below : 
@@ -82,8 +83,8 @@ while True:
                     print(f"\n{line}")
                 elif line.startswith("/") : 
                     print(line)
-                else : 
-                    continue
-            input("\nPress ENTER to continue...")
+        elif choice == '9' :
+            return
+        input("\nPress ENTER to continue...")
         system("clear")
 
