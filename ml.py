@@ -37,6 +37,8 @@ def check_for_scikit_learn():
 
 
 def predict():
+    from welcome import welcome
+    print(welcome("ML World"))
     path=input("Enter the path of the csv file..") #absolute path of the csv file
     try:
      import pandas    #trying for importing the pandas if we got error which means moudle is not present then we will download it
