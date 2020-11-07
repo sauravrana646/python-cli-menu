@@ -1,7 +1,7 @@
-
+import platform #For checking the base-os type like windows ,linux etc
+import subprocess # for running the os level command wih=th the help of the python
+from welcome import welcome #Just for some interactive pattern/design
 def check_for_pandas():
-        import platform #For checking the base-os type like windows ,linux etc
-        import subprocess # for running the os level command wih=th the help of the python
         os_name=platform.system().lower() #finding the type of os
         if os_name =="linux":
             print("installing pandas  for you...")
@@ -16,8 +16,6 @@ def check_for_pandas():
         return 0
 
 def check_for_scikit_learn():
-    import platform
-    import subprocess
     os_name=platform.system().lower()
     if os_name =="linux":
         print("Installing scikit-learn  for you..")
@@ -32,12 +30,7 @@ def check_for_scikit_learn():
     return 0
 
 
-    
-
-
-
 def predict():
-    from welcome import welcome
     print(welcome("ML World"))
     path=input("Enter the path of the csv file..") #absolute path of the csv file
     try:
@@ -78,7 +71,11 @@ def predict():
     else:
         model.fit(column1,column2)
 
-
+    o=platform.system().lower()
+    if o=="linux":
+                subprocess.run("clear",shell=True)
+    elif os =="windows:
+                subprocess.run("cls",shell=True)
     while(True):
        predictor_value=float(input("What is the value of the predictor[what is the value of x]?"))
        output=model.predict([[predictor_value]])
