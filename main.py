@@ -1,6 +1,6 @@
 from AWS import aws
 import os
-from partiton import partition
+from Partitions.partiton import partition
 from welcome import welcome
 
 
