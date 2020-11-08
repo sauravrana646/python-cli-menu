@@ -1,6 +1,7 @@
 import subprocess # for  running the os level commands
 import platform #for finding the name of the os
 from welcome import welcome
+
 def pull_image(): #Method for pulling/downloading the docker image form the docker hub
 
     image=input("Enter the image name[also specify the version if you want]-:")
@@ -12,7 +13,7 @@ def pull_image(): #Method for pulling/downloading the docker image form the dock
 
 def launch_container(): #Method for launching the docker container 
 
-    image_name=input("Enter the image name-:")
+    image_name=input("Enter the image name :")
     os_name=input("Enter the name you want to give[else just press enter]-:")
     if len(os_name) !=0:
         subprocess.run("docker run -it --name {} {}".format(os_name,image_name),shell=True)
@@ -150,11 +151,12 @@ def docker():
    13. Stop running  Container
    14. Stop Docker Services.
    15. Go Back
-
-    
 """)
     choice=input("Enter your choice : ")
     if choice =='1':
+        print("\n\nListing Available Images\n")
+        subprocess.run("docker images",shell=True)
+        print()
         launch_container()
     elif choice=='2':
         pull_image()
