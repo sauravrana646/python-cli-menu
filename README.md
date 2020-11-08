@@ -28,6 +28,7 @@ To manage Logical Volume and related concepts.
 To manage everything related to Docker and containerization
 
 ### Machine Learning
-Implemented LinearRegression model of Machine Learning.We need to provide csv file to it and we have hardcoded that the data-set in file for now (SO CSV FILE SHOULD HAVE ONLY TWO COLUMNS ONLY X AND Y)
+Implemented LinearRegression model of Machine Learning.We need to provide csv file to it and we have hardcoded that the data-set in file for now.
+**SO CSV FILE SHOULD HAVE ONLY TWO COLUMNS ONLY X AND Y**
 
 
