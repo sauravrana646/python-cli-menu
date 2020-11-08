@@ -127,8 +127,15 @@ def stop_running_docker():  #method for stopping the running container
 
 def docker():
   while True:
+    os_name=platform.system().lower()
+    if os_name=="linux":
+        subprocess.run("clear",shell=True)
+    elif os_name=="windows":
+        subprocess.run("cls",shell=True)
+
     print(welcome("Docker"))
-    print("""    1. Launch a new Conatiner
+    print("""    
+    1. Launch a new Conatiner
     2. Pull/Download image
     3. Remove image
     4. Remove Container
@@ -146,36 +153,36 @@ def docker():
 
     
 """)
-    choice=int(input("Enter your choice-:"))
-    if choice ==1:
+    choice=input("Enter your choice : ")
+    if choice =='1':
         launch_container()
-    elif choice==2:
+    elif choice=='2':
         pull_image()
-    elif choice ==3:
+    elif choice =='3':
         remove_image()
-    elif choice==4:
+    elif choice=='4':
         remove_container()
-    elif choice==5:
+    elif choice=='5':
         see_logs()
-    elif choice==6:
+    elif choice=='6':
         cp_base_to_cont()
-    elif choice==7:
+    elif choice=='7':
         cp_cont_to_base()
-    elif choice ==8:
+    elif choice =='8':
         see_the_running_cont()
-    elif choice==9:
+    elif choice=='9':
         see_all_cont()
-    elif choice ==10:
+    elif choice =='10':
         start_exist_cont()
-    elif choice==11:
+    elif choice=='11':
         get_terminal()
-    elif choice==12:
+    elif choice=='12':
         start_docker_service()
-    elif choice ==13:
+    elif choice =='13':
         stop_running_docker()
-    elif choice==14:
+    elif choice=='14':
         stop_docker_services()
-    elif choice==15:
+    elif choice=='15':
         return
 
     input("\n\nPress any key to continue...")

@@ -2,6 +2,7 @@ from AWS import aws
 import os
 from Partitions.partiton import partition
 from Partitions.lvm import lvm
+from Docker.docker import docker
 from welcome import welcome
 
 
@@ -14,6 +15,7 @@ def main():
         1 : AWS 
         2 : PARTITIONS
         3 : LVM
+        4 : Docker
         0 : Exit"""
               )
         choice = input("\nEnter your choice : ")
@@ -24,6 +26,8 @@ def main():
             partition()
         elif choice == '3' :
             lvm()
+        elif choice == '4' :
+            docker()
         elif choice == '0':
             exit()
         os.system("clear")
