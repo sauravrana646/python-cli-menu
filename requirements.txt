@@ -2,7 +2,6 @@
 #        PYTHON VERSION 3.8.2 REQUIRED
 #       +-+-+-+-+-+ +-+-+-+ +-+-+-+-+-+
 #
-
 # pip3.8 install -r requirements.txt to install the dependencies
 
 
