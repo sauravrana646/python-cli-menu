@@ -1,16 +1,17 @@
 # arth_team_task
 
 # ARTH TEAM 7.9
+
+
 ## Get Started
 
+##### INSTALL PYTHON 3.8.2 ==> To install python 3.8.2 run the [python_install_3.8.2](python_install_3.8.2) file using `source python_install_3.8.2` and it will setup python3.8
 
-### INSTALL PYTHON 3.8.2 ==> To install python 3.8.2 run the [python_install_3.8.2](python_install_3.8.2) file using `source python_install_3.8.2` and it will setup python3.8
+##### Now you can run python programs using <python3.8> command and pip using `pip3.8` command 
 
-### Now you can run python programs using <python3.8> command and pip using `pip3.8` command 
+##### Check [requrirements.txt](requirements.txt) for extra installation dependecies
 
-### Check [requrirements.txt](requirements.txt) for extra installation dependecies
-
-### `pip3.8 install -r requirements.txt` to install the dependencies
+##### `pip3.8 install -r requirements.txt` to install the dependencies
 
 ## Main Features
 
