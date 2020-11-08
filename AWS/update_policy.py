@@ -8,7 +8,7 @@ def update_policy(bucket_name,OAI):
 
     data = data.replace('BUCKET_NAME_HERE', bucket_name)
     data = data.replace('ORIGIN_ACCESS_IDENTITY_HERE', OAI)
-    print(data)
+    # print(data)
    
     with open("AWS/new_bucket_policy.json" , "w") as f:
         f.write(data)

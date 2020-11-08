@@ -10,7 +10,7 @@ from subprocess import run, PIPE
 def aws():
     os.system("clear")
     print(welcome("AWS"))
-    aws_out = run(f"aws",shell=True,capture_output=True)
+    aws_out = run(f"aws help",shell=True,capture_output=True)
     if aws_out.returncode != 0 :
         print(Fore.RED + f"AWS CLI is not installed on the machine\nError : \n{aws_out.stderr.decode()}")
         print(Style.RESET_ALL)

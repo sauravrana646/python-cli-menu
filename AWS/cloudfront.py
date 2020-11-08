@@ -10,10 +10,10 @@ def create_cloudfront_dist(origin_name,root_object="",oai_id=""):
     path_dir = path.abspath(r"AWS\new_conf.json")
     cldf_out = run(f"aws cloudfront create-distribution --distribution-config file://{path_dir} ",shell=True, capture_output=True)
     if cldf_out.returncode == 0:
-        print(Fore.GREEN + f"\nAuthentication succcess\n\n{cldf_out.stdout.decode()}")
+        print(Fore.GREEN + f"\nSuccess\n\n{cldf_out.stdout.decode()}")
         print(Style.RESET_ALL)
     else :
-        print(Fore.RED + f"\nCouldn't authenticate\n\nError : \n{cldf_out.stderr.decode()}")
+        print(Fore.RED + f"\nCouldn't do it\n\nError : \n{cldf_out.stderr.decode()}")
         print(Style.RESET_ALL)
     run(f"rm -f {path_dir}",shell=True)
 
