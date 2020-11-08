@@ -17,7 +17,7 @@
 
 ## Main Features
 
-# ![First Look](file://F:\ScreenShots\Screenshot_927.png")
+# ![First Look](file://F:\ScreenShots\Screenshot_927.png)
 
 ### AWS
 To manage the AWS Services like EC2 , S3 , Cloudfornt and their sub-services. 
