@@ -2,7 +2,7 @@
 
 # ARTH TEAM 2020 7.9
 # ![ARTH 2020](https://rightarth.com/images/logo.png)
-# ![test](https://rightarth.com/images/favicon.png)
+
 
 ## Get Started
 
@@ -17,7 +17,7 @@
 
 ## Main Features
 
-# ![First Look](file://F:\ScreenShots\Screenshot_927.png)
+# ![First Look](https://drive.google.com/file/d/1qv3pcaHmnb9MNKBm-tl3Kupw5S2jnKcf/view?usp=sharing)
 
 ### AWS
 To manage the AWS Services like EC2 , S3 , Cloudfornt and their sub-services. 
