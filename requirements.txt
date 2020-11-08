@@ -2,9 +2,11 @@
 #        PYTHON VERSION 3.8.2 REQUIRED
 #       +-+-+-+-+-+ +-+-+-+ +-+-+-+-+-+
 #
-# INSTALL PYTHON 3.8.2 ==> 
+# INSTALL PYTHON 3.8.2 ==> To install python 3.8.2 run the python_install_3.8.2 file using <source python_install_3.8.2> and it will setup python3.8
+# Now you can run python programs using <python3.8> command and pip using <pip3.8> command 
 
-# pip install -r requirements.txt to install the dependencies
+# pip3.8 install -r requirements.txt to install the dependencies
+
 args==0.1.0
 certifi==2020.6.20
 chardet==3.0.4
