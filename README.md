@@ -5,7 +5,7 @@
 
 ## Get Started
 
-##### INSTALL PYTHON 3.8.2 ==> To install python 3.8.2 run the [python_install_3.8.2](python_install_3.8.2) file using `source python_install_3.8.2` and it will setup python3.8
+##### INSTALL PYTHON 3.8.2 ==> To install python 3.8.2 run the [python_install_3.8.2](python_install_3.8.2) file on RHEL 8 using `source python_install_3.8.2` and it will setup python3.8
 
 ##### Now you can run python programs using <python3.8> command and pip using `pip3.8` command 
 
