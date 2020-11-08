@@ -17,7 +17,7 @@
 
 ## Main Features
 
-## [](Extras/First_Look.png)
+## [](/Extras/First_Look.jpg)
 
 ### AWS
 To manage the AWS Services like EC2 , S3 , Cloudfornt and their sub-services. 
