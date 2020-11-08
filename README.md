@@ -17,7 +17,7 @@
 
 ## Main Features
 
-## [First_Look.jpg](First_Look.jpg)
+## ![First_Look.jpg](https://github.com/sauravrana646/arth_team_task/blob/main/First_Look.jpg?raw=true)
 
 ### AWS
 To manage the AWS Services like EC2 , S3 , Cloudfornt and their sub-services. 
