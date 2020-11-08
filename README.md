@@ -1,10 +1,32 @@
 # arth_team_task
 
 # ARTH TEAM 7.9
-## Check [requrirements.txt](requirements.txt) for instructions
+## Get Started
 
-### ml.py
-This file is related to the machine learning..In this file,there is a function predict ,we just have to call that  function and provide csv file to it..For now, We  have hardcoded that the data-set in file is increasing linerarly and continuous(Regressive) in nature..Hence,We made the use of Simple LinerRegression() here..
 
-### docker.py
-In this file ,We have created functions/methods for the stuffs in docker , which we perform on daily basis like launching docker, pull image, start container etc...
+### INSTALL PYTHON 3.8.2 ==> To install python 3.8.2 run the [python_install_3.8.2](python_install_3.8.2) file using `source python_install_3.8.2` and it will setup python3.8
+
+### Now you can run python programs using <python3.8> command and pip using `pip3.8` command 
+
+### Check [requrirements.txt](requirements.txt) for extra installation dependecies
+
+### `pip3.8 install -r requirements.txt` to install the dependencies
+
+## Main Features
+
+### AWS
+To manage the AWS Services like EC2 , S3 , Cloudfornt and their sub-services. 
+
+### Partition
+To manage , create and delete linux static partitions
+
+### LVM
+To manage Logical Volume and related concepts.
+
+### Docker
+To manage everything related to Docker and containerization
+
+### Machine Learning
+Implemented LinearRegression model of Machine Learning.We need to provide csv file to it and we have hardcoded that the data-set in file for now (SO CSV FILE SHOULD HAVE ONLY TWO COLUMNS ONLY X AND Y)
+
+
