@@ -1,7 +1,7 @@
 # arth_team_task
 
 # ARTH TEAM 7.9
-## Check requirements.txt before running programs
+## Check requirements.txt for instructions
 
 ### ml.py
 This file is related to the machine learning..In this file,there is a function predict ,we just have to call that  function and provide csv file to it..For now, We  have hardcoded that the data-set in file is increasing linerarly and continuous(Regressive) in nature..Hence,We made the use of Simple LinerRegression() here..
