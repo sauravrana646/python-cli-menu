@@ -10,6 +10,15 @@ from subprocess import run, PIPE
 def aws():
     os.system("clear")
     print(welcome("AWS"))
+    aws_out = run(f"aws",shell=True,capture_output=True)
+    if aws_out.returncode != 0 :
+        print(Fore.RED + f"AWS CLI is not installed on the machine\nError : \n{aws_out.stderr.decode()}")
+        print(Style.RESET_ALL)
+        print("Exiting...\n\nPress ENTER to continue...")
+        input()
+        return 
+    else:
+        pass
     print("\nChecking User Authentication\n")
     authcheck = run("aws sts get-caller-identity",shell=True,capture_output=True)
     if authcheck.returncode == 0:

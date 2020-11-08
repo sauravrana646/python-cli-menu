@@ -1,5 +1,5 @@
 from subprocess import Popen,PIPE,run
-# from welcome import welcome
+from welcome import welcome
 import sys
 from os import system
 from colorama import Fore, Back, Style
@@ -113,8 +113,8 @@ def del_pv(pvname):
 def lvm():    
     while True:
         system("clear")
-        # print(welcome("LVM PARTITION"))
-        print("""Select from below : 
+        print(welcome("LVM PARTITION"))
+        print("""Select from below :\n 
         1. Create Physical Volume
         2. Create Volume Group
         3. Create Logical Volume
