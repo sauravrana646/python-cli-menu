@@ -15,7 +15,7 @@ def create_partition(device,part_type="",part_number="",start="",end="") :
         print(Fore.GREEN + f"Succcessfully Created the partition\n")
         print(Style.RESET_ALL)
     else :
-        print(Fore.RED + f"\nCouldn't create partition\n\nError : \n{part_out.stderr.decode()}")
+        print(Fore.RED + f"\nCouldn't create partition\n\nError : \n{part_out.stderr}")
         print(Style.RESET_ALL)
 
     input("\nPress ENTER to continue...")
@@ -57,6 +57,10 @@ def partition():
             print_out = run(f"fdisk {device}",capture_output=True,shell=True,input=b'p\nq\n')
             print_out = print_out.stdout.decode(sys.stdout.encoding)
             for line in print_out.split("\n"):
+                if line == "Device does not contain a recognized partition table.":
+                    print(Fore.RED + "No partitions Found")
+                    print(Style.RESET_ALL)
+                    break
                 if line.startswith("/") or line.startswith("Device"): 
                     print(line)
                 else : 
@@ -78,18 +82,17 @@ def partition():
             print(f"\n\nPrinting Partitions in {device}\n")
             print_out = run(f"fdisk {device}",capture_output=True,shell=True,input=b'p\nq\n')
             print_out = print_out.stdout.decode(sys.stdout.encoding)
-            total_parts = ""
+
             for line in print_out.split("\n"):
+                if line == "Device does not contain a recognized partition table.":
+                    print(Fore.RED + "No partitions Found")
+                    print(Style.RESET_ALL)
+                    input("\nPress ENTER to continue..")
+                    partition()
                 if line.startswith("/") or line.startswith("Device"): 
-                    total_parts = total_parts + line + "\n"
                     print(line)
                 else : 
                     continue
-            if total_parts == "" or "Device does not contain a recognized partition table.\n": 
-                print(Fore.RED + "No partiton to delete.\n")
-                print(Style.RESET_ALL)
-                input("Press Enter to continue...")
-                partition()
                    
             part_number = input("\nEnter partition number to delete (leave empty for default): ")
             delete_partition(device,part_number)
