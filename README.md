@@ -1,7 +1,7 @@
 # arth_team_task
 
 # ARTH TEAM 2020 7.9
-
+# ![ARTH 2020](https://rightarth.com/images/logo.png)
 
 ## Get Started
 
@@ -15,6 +15,8 @@
 ##### `pip3.8 install -r requirements.txt` to install the dependencies
 
 ## Main Features
+
+# ![First Look](file://F:\ScreenShots\Screenshot_927.png")
 
 ### AWS
 To manage the AWS Services like EC2 , S3 , Cloudfornt and their sub-services. 
