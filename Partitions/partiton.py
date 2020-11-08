@@ -48,13 +48,16 @@ def partition():
             device = input("Enter Device Name : ")
 
             print("\n\nPrinting Already Created Partitions\n")
-            print_out = run(f"fdisk {device}",capture_output=True,shell=True,input=b'p\nq\n')
+            print_out = run(f"fdisk -l",capture_output=True,shell=True)
             print_out = print_out.stdout.decode(sys.stdout.encoding)
             for line in print_out.split("\n"):
-                if line.startswith("/") or line.startswith("Device"): 
+                if line.startswith("Disk /dev/s") : 
+                    print(f"\n{line}")
+                if line.startswith("Device") : 
+                    print(f"\n{line}")
+                elif line.startswith("/") : 
                     print(line)
-                else : 
-                    continue
+            
             part_type = input("\n\nEnter partition type [primary p \ extended e] : ")
             part_number = input("Enter partition number (leave empty for default): ")
             start = input("Enter start sector (leave empty for default) : ")
