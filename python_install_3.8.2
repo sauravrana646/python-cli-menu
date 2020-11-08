@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+sudo dnf groupinstall 'development tools'
+sudo dnf install bzip2-devel expat-devel gdbm-devel ncurses-devel openssl-devel readline-devel wget sqlite-devel tk-devel xz-devel zlib-devel libffi-devel
+VERSION=3.8.2
+wget https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tgz
+tar -xf Python-${VERSION}.tgz
+cd Python-${VERSION}
+./configure --enable-optimizations
+make -j 4
+sudo make altinstall
