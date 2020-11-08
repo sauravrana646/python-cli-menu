@@ -45,7 +45,7 @@ def partition():
         9. Go back""")
         choice = input("\nEnter your choice : ")
         if choice == '1' :
-            print("Listing all Devices : \n")
+            print("\nListing all Devices : \n")
             print_out = run(f"fdisk -l",capture_output=True,shell=True)
             print_out = print_out.stdout.decode(sys.stdout.encoding)
             for line in print_out.split("\n"):
@@ -55,9 +55,9 @@ def partition():
                     print(f"\n{line}")
                 elif line.startswith("/") : 
                     print(line)
-            device = input("Enter Device Name : ")
+            device = input("\n\nEnter Device Name [ex : /dev/sda]: ")
 
-            print("\n\nPrinting Already Created Partitions\n")
+            print(f"\n\nPrinting Already Created Partitions in {device}\n")
             print_out = run(f"fdisk {device}",capture_output=True,shell=True,input=b'p\nq\n')
             print_out = print_out.stdout.decode(sys.stdout.encoding)
             for line in print_out.split("\n"):
@@ -71,20 +71,29 @@ def partition():
             end = input("Enter last sector (leave empty for default or can give size as +5G) : ")
             create_partition(device,part_type,part_number,start,end)
         if choice == '2' : 
-            device = input("Enter Device Name : ")
+            print("\nListing all Devices : \n")
+            print_out = run(f"fdisk -l",capture_output=True,shell=True)
+            print_out = print_out.stdout.decode(sys.stdout.encoding)
+            for line in print_out.split("\n"):
+                if line.startswith("Disk /dev/s") : 
+                    print(f"\n{line}")
+                if line.startswith("Device") : 
+                    print(f"\n{line}")
+                elif line.startswith("/") : 
+                    print(line)
+            device = input("Enter Device Name [ex : /dev/sda]: ")
 
-            print("\n\nPrinting Partitions\n")
+            print(f"\n\nPrinting Partitions in {device}\n")
             print_out = run(f"fdisk {device}",capture_output=True,shell=True,input=b'p\nq\n')
             print_out = print_out.stdout.decode(sys.stdout.encoding)
-            total_parts = None
+            total_parts = ""
             for line in print_out.split("\n"):
                 if line.startswith("/") or line.startswith("Device"): 
                     total_parts = total_parts + line + "\n"
                     print(line)
                 else : 
                     continue
-                print(f'This is the total : {total_parts}')
-            if total_parts is None : 
+            if total_parts == "" : 
                 print(Fore.RED + "No partiton to delete.\n")
                 print(Style.RESET_ALL)
                 input("Press Enter to continue...")
