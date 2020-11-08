@@ -7,6 +7,7 @@ from welcome import welcome
 
 def main():
     while True:
+        os.system("clear")
         print(welcome("ARTH TASK"))
         print("\nChoose service you want to use : ")
         print("""

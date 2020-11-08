@@ -51,11 +51,7 @@ def partition():
             for line in print_out.split("\n"):
                 if line.startswith("Disk /dev/s") : 
                     print(f"\n{line}")
-                if line.startswith("Device") : 
-                    print(f"\n{line}")
-                elif line.startswith("/") : 
-                    print(line)
-            device = input("\n\nEnter Device Name [ex : /dev/sda]: ")
+            device = input("\n\nEnter Disk Name [ex : /dev/sda]: ")
 
             print(f"\n\nPrinting Already Created Partitions in {device}\n")
             print_out = run(f"fdisk {device}",capture_output=True,shell=True,input=b'p\nq\n')
@@ -77,11 +73,7 @@ def partition():
             for line in print_out.split("\n"):
                 if line.startswith("Disk /dev/s") : 
                     print(f"\n{line}")
-                if line.startswith("Device") : 
-                    print(f"\n{line}")
-                elif line.startswith("/") : 
-                    print(line)
-            device = input("Enter Device Name [ex : /dev/sda]: ")
+            device = input("\n\nEnter Disk Name [ex : /dev/sda]: ")
 
             print(f"\n\nPrinting Partitions in {device}\n")
             print_out = run(f"fdisk {device}",capture_output=True,shell=True,input=b'p\nq\n')
@@ -93,7 +85,7 @@ def partition():
                     print(line)
                 else : 
                     continue
-            if total_parts == "" : 
+            if total_parts == "" or "Device does not contain a recognized partition table.\n": 
                 print(Fore.RED + "No partiton to delete.\n")
                 print(Style.RESET_ALL)
                 input("Press Enter to continue...")
@@ -105,14 +97,17 @@ def partition():
         if choice == '3' :
             print(Fore.GREEN + "\n\nPrinting Partitions")
             print(Style.RESET_ALL)
-            print_out = run(f"fdisk -l",capture_output=True,shell=True,input=b'p\nq\n')
+            print_out = run(f"fdisk -l",capture_output=True,shell=True)
             print_out = print_out.stdout.decode(sys.stdout.encoding)
             for line in print_out.split("\n"):
+                if line.startswith("Disk /dev/s") : 
+                    print(f"\n{line}")
                 if line.startswith("Device") : 
                     print(f"\n{line}")
                 elif line.startswith("/") : 
-                    print(line)
+                    print(line)       
             input("\nPress Enter to continue...")
+
         elif choice == '9' :
             return
 
