@@ -2,6 +2,7 @@
 
 # ARTH TEAM 2020 7.9
 # ![ARTH 2020](https://rightarth.com/images/logo.png)
+# ![test](https://rightarth.com/images/favicon.png)
 
 ## Get Started
 
