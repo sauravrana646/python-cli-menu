@@ -15,6 +15,8 @@
 
 ##### `pip3.8 install -r requirements.txt` to install the dependencies
 
+##### Also we need AWS CLI V2 program installed on host to run AWS Section of the program.You can download it from [here](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+
 ## Main Features
 
 ## ![First_Look.jpg](https://github.com/sauravrana646/arth_team_task/blob/main/Extras/First_Look.jpg?raw=true)
