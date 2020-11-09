@@ -2,6 +2,7 @@ from AWS import aws
 import os
 from Partitions.partiton import partition
 from Partitions.lvm import lvm
+from YUM.yum_config import yum
 from Docker.docker import docker
 from Machine_Learning.ml import  predict
 from welcome import welcome
@@ -18,6 +19,7 @@ def main():
         3 : LVM
         4 : Docker
         5 : Machine Learning
+        6 : Configure Yum (Recommended first if not configured)
         0 : Exit"""
               )
         choice = input("\nEnter your choice : ")
@@ -32,6 +34,8 @@ def main():
             docker()
         elif choice == '5' :
             predict()
+        elif choice == '6' :
+            yum()
         elif choice == '0':
             exit()
         os.system("clear")
