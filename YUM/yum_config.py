@@ -3,6 +3,21 @@ from welcome import welcome
 from subprocess import run,PIPE
 from colorama import Fore, Back, Style
 
+def additonal_repo():
+    print(Fore.YELLOW + "\nInstalling additonal Repos for redhat.......\n")
+    print(Style.RESET_ALL)
+
+    epel_out = run("dnf install  -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm",shell=True,text=True,stderr=PIPE)
+    if epel_out.returncode != 0 :
+        print(Fore.RED + f"\nWe encountered some error : \n{epel_out.stderr}")
+        print(Style.RESET_ALL)
+
+    rpmfusion_out = run("dnf install -y --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm",shell=True,text=True,stderr=PIPE)
+    if rpmfusion_out.returncode != 0 :
+        print(Fore.RED + f"\nWe encountered some error : \n{rpmfusion_out.stderr}")
+        print(Style.RESET_ALL)
+    
+
 def yum():
     system("clear")
     print(welcome("YUM CONFIGURATION"))
@@ -31,18 +46,7 @@ def yum():
         print(Style.RESET_ALL)
         yumfile.close()
 
-    print(Fore.YELLOW + "\nInstalling additonal Repos for redhat.......\n")
-    print(Style.RESET_ALL)
-
-    epel_out = run("dnf install  -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm",shell=True,text=True,stderr=PIPE)
-    if epel_out.returncode != 0 :
-        print(Fore.RED + f"\nWe encountered some error : \n{epel_out.stderr}")
-        print(Style.RESET_ALL)
-
-    rpmfusion_out = run("dnf install -y --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm",shell=True,text=True,stderr=PIPE)
-    if rpmfusion_out.returncode != 0 :
-        print(Fore.RED + f"\nWe encountered some error : \n{rpmfusion_out.stderr}")
-        print(Style.RESET_ALL)
+    additonal_repo()
 
     print(Fore.GREEN + "\nListing repos : \n")
     print(Style.RESET_ALL)
