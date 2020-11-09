@@ -1,7 +1,6 @@
 import subprocess # for  running the os level commands
 import platform #for finding the name of the os
 from welcome import welcome
-
 def pull_image(): #Method for pulling/downloading the docker image form the docker hub
 
     image=input("Enter the image name[also specify the version if you want]-:")
@@ -13,7 +12,7 @@ def pull_image(): #Method for pulling/downloading the docker image form the dock
 
 def launch_container(): #Method for launching the docker container 
 
-    image_name=input("Enter the image name :")
+    image_name=input("Enter the image name-:")
     os_name=input("Enter the name you want to give[else just press enter]-:")
     if len(os_name) !=0:
         subprocess.run("docker run -it --name {} {}".format(os_name,image_name),shell=True)
@@ -124,19 +123,43 @@ def stop_running_docker():  #method for stopping the running container
     else:
         print("Something wrong happpened..:(")
 
+def list_all_stopped_conatiner():
+    subprocess.run("docker ps --filter status=exited",shell=True)
+
+def stop_all_containers():
+    output=subprocess.run("docker ps -q",shell=True,stdout=subprocess.PIPE)
+    li=list()
+    st=""
+    for y in range(0,len(output.stdout)):
+        if chr(output.stdout[y])=="\n":
+            li.append(st)
+            st=""
+        else:
+            st=st+chr(output.stdout[y])
+    val=0
+    for y in li:
+        out=subprocess.run("docker stop {}".format(y),shell=True)
+        if out.returncode==0:
+            val+=1
+    if val==len(li):
+        print("All the running conatiners are stopped successfully...:)")
+    else:
+        print("Soemthing wrong happended....:(")
+    
+
+
 
 
 def docker():
-  while True:
-    os_name=platform.system().lower()
-    if os_name=="linux":
+  os_name=platform.system().lower()
+  if os_name=="linux":
         subprocess.run("clear",shell=True)
-    elif os_name=="windows":
+  elif os_name=="windows":
         subprocess.run("cls",shell=True)
+  while True:
 
     print(welcome("Docker"))
-    print("""    
-    1. Launch a new Conatiner
+    print("""    1. Launch a new Conatiner
     2. Pull/Download image
     3. Remove image
     4. Remove Container
@@ -150,47 +173,88 @@ def docker():
    12. Start Docker Services
    13. Stop running  Container
    14. Stop Docker Services.
-   15. Go Back
+   15. List all inactive containers
+   16. Stop All running containers
+   17. Go Back
+
+    
 """)
-    choice=input("Enter your choice : ")
-    if choice =='1':
-        print("\n\nListing Available Images\n")
+    choice=int(input("Enter your choice-: "))
+    if choice ==1:
+        print("\n\nListing all images...")
+        print()
+        subprocess.run("docker images ",shell=True)
+        launch_container()
+    elif choice==2:
+        print("\n\nRight Now you have following images...")
         subprocess.run("docker images",shell=True)
         print()
-        launch_container()
-    elif choice=='2':
         pull_image()
-    elif choice =='3':
+    elif choice ==3:
+        print("\n\n you have following images...")
+        subprocess.run("docker images",shell=True)
+        print()
         remove_image()
-    elif choice=='4':
-        remove_container()
-    elif choice=='5':
-        see_logs()
-    elif choice=='6':
-        cp_base_to_cont()
-    elif choice=='7':
-        cp_cont_to_base()
-    elif choice =='8':
-        see_the_running_cont()
-    elif choice=='9':
+    elif choice==4:
+        print("\n\nListing all Conatiners....")
         see_all_cont()
-    elif choice =='10':
+        print()
+        remove_container()
+    elif choice==5:
+        print("\n\nListing all Constainers...")
+        see_all_cont()
+        print()
+        see_logs()
+    elif choice==6:
+        print("\n\nListing all Constainers...")
+        see_all_cont()
+        print()
+        cp_base_to_cont()
+    elif choice==7:
+        print("\n\nListing all Constainers...")
+        see_all_cont()
+        print()
+        cp_cont_to_base()
+    elif choice ==8:
+        see_the_running_cont()
+    elif choice==9:
+        print("Listing Containers for you....")
+        see_all_cont()
+    elif choice ==10:
+        print("\n\nRight Now following containers are not running...")
+        list_all_stopped_conatiner()
+        print()
         start_exist_cont()
-    elif choice=='11':
+    elif choice==11:
+        print("\n\nRight Now following containers are running..")
+        see_the_running_cont()
+        print()
         get_terminal()
-    elif choice=='12':
+    elif choice==12:
         start_docker_service()
-    elif choice =='13':
+    elif choice ==13:
+        print("\n\nRight Now following containers are running... :)")
+        see_the_running_cont()
+        print()
         stop_running_docker()
-    elif choice=='14':
+    elif choice==14:
         stop_docker_services()
-    elif choice=='15':
+    elif choice==15:
+        print("\n\n:isting all stopped containers for you...:)")
+        list_all_stopped_conatiner()
+    elif choice==16:
+        stop_all_containers()
+    elif choice==17:
         return
+    else:
+        print("Oops!! You have entered wrong choice....")
 
-    input("\n\nPress any key to continue...")
+
+    input("Press any key to continue...")
     os_name=platform.system().lower()
     if os_name=="linux":
         subprocess.run("clear",shell=True)
     elif os_name=="windows":
         subprocess.run("cls",shell=True)
 
+      
