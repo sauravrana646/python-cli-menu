@@ -60,8 +60,15 @@ def create_key_pair(key_name):
         print(Style.RESET_ALL)
     input("Enter to continue....")
 
-def launch_instance(image_id,security_group,key_pair,count,instance_type):
-    print("Launching Container")
+def launch_instance(security_group,key_pair,count="1",instance_type="t2.micro",image_id="ami-0e306788ff2473ccb"):
+    if image_id == "" or " " :
+        image_id = "ami-0e306788ff2473ccb"
+    if count == "" or " " :
+        count = "1"
+    if instance_type == "" or " " :
+        instance_type = "t2.micro"
+    print(Fore.GREEN + "\nLaunching Container\n")
+    print(Style.RESET_ALL)
     cmd = f"aws ec2 run-instances --image-id {image_id} --key-name {key_pair} --security-group-ids {security_group} --count {count} --instance-type {instance_type}"
     launch_out = run(f"{cmd}",shell=True,capture_output=True)
     if launch_out.returncode == 0 :
@@ -86,12 +93,18 @@ def ec2():
         9. Go back""")
         choice = input("\nEnter your choice : ")
         if choice == '1' :
-            image_id = input("\nEnter Image ID : ")
-            count = input("Enter no. of instances to launch : ")
+            image_id = input("\nEnter Image ID [default Amazon Linux 2]: ")
+            count = input("Enter no. of instances to launch [default 1]: ")
+            print(Fore.GREEN + "\nAvailable Security Groups : \n")
+            run("aws ec2 describe-security-groups --query \"SecurityGroups[*].[GroupId,GroupName]\" --output text")
+            print(Style.RESET_ALL)
             security_group = input("Enter the security group ids : ")
+            print(Fore.GREEN + "\nAvailable Key Pairs : \n")
+            run("aws ec2 describe-key-pairs --key-names --query KeyPairs[*].KeyName",shell=True,text=True)
+            print(Style.RESET_ALL)
             key_pair = input("Enter name of key-pair : ")
-            instance_type = input("Enter the instance type : ")
-            launch_instance(image_id,security_group,key_pair,count,instance_type)
+            instance_type = input("Enter the instance type [default t2.micro]: ")
+            launch_instance(security_group,key_pair,count,instance_type,image_id)
         elif choice == '2':
             key_name = input("Enter your Key name : ")
             create_key_pair(key_name)
