@@ -59,7 +59,10 @@ def s3():
             caa = input("Do you want to Block public and cross-account access to buckets and objects through any public bucket or access point policies [true/false] : ")
             public_acess_block(bucket_name,new_acl,any_acl,app,caa)
         if choice == '3' :
-            bucket_name = input("Enter Bucker name : ")
+            print(Fore.GREEN + "Available Buckets : \n")
+            run("aws s3api list-buckets --query \"Buckets[].Name\"",shell=True,text=True)
+            print(Style.RESET_ALL)
+            bucket_name = input("Enter Bucket name : ")
             key = input("Enter file/folder name where to save object in S3 : ")
             body = input("Enter the local path of the object you wish to add to Bucket : ")
             acl = input("Enter Access Control [private/public-read] : ")

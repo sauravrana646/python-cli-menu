@@ -96,7 +96,7 @@ def ec2():
             image_id = input("\nEnter Image ID [default Amazon Linux 2]: ")
             count = input("Enter no. of instances to launch [default 1]: ")
             print(Fore.GREEN + "\nAvailable Security Groups : \n")
-            run("aws ec2 describe-security-groups --query \"SecurityGroups[*].[GroupId,GroupName]\" --output text")
+            run("aws ec2 describe-security-groups --query \"SecurityGroups[*].[GroupId,GroupName]\" --output text",shell=True,text=True)
             print(Style.RESET_ALL)
             security_group = input("Enter the security group ids : ")
             print(Fore.GREEN + "\nAvailable Key Pairs : \n")

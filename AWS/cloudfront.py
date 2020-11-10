@@ -60,7 +60,13 @@ def cloudfront():
             comment = input("Enter Comment : ")
             create_OAI(caller_reference,comment)
         if choice == '2' : 
+            print(Fore.GREEN + "Available Buckets : \n")
+            run("aws s3api list-buckets --query \"Buckets[].Name\"",shell=True,text=True)
+            print(Style.RESET_ALL)
             origin_name = input("Enter your Origin (if s3 use <bucket name>) : ")
+            print(Fore.GREEN + "Available Cloundfront OAIs : \n")
+            run("aws cloudfront list-cloud-front-origin-access-identities --query \"CloudFrontOriginAccessIdentityList.Items[*].[Comment,Id]\" --output text",shell=True,text=True)
+            print(Style.RESET_ALL)
             oai_id = input("Enter Origin Access Identity (if using s3 as origin): ")
             root_object = input("Enter Default Root Object (if any) : ")
             create_cloudfront_dist(origin_name,root_object,oai_id)
