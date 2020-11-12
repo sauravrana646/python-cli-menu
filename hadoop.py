@@ -6,9 +6,9 @@ from welcome import welcome
 
 def putFiles(FILE , ip_) : 
   
-   sc = spb.run(f'ssh {ip_} rm /etc/hadoop/{FILE}.xml',shell=True, capture_output=True)
-   sc = spb.run(f'scp {FILE}.xml {ip_}:/etc/hadoop',shell=True, capture_output=True)
-   sc = spb.run(f'rm {FILE}.xml',shell=True)
+   sc = subprocess.run(f'ssh {ip_} rm /etc/hadoop/{FILE}.xml',shell=True, capture_output=True)
+   sc = subprocess.run(f'scp {FILE}.xml {ip_}:/etc/hadoop',shell=True, capture_output=True)
+   sc = subprocess.run(f'rm {FILE}.xml',shell=True)
 
 
 def buildNode(mode , IP , PORT , IP2 = 'none', file_='none' , filem_ = 'none') : 
@@ -166,7 +166,8 @@ def buildNode(mode , IP , PORT , IP2 = 'none', file_='none' , filem_ = 'none') :
     if mode == 'namenode' : 
            
            filestatus = subprocess.run(f'ssh {IP} mkdir /{filem_}',shell=True,capture_output=True)
-           filestatus = print('Want to format[Y/N]?')
+           filestatus = input('Want to format[Y/N]?')
+    if filestatus == 'Y':       
            filestatus = subprocess.run(f'ssh {IP} hadoop namenode -format',shell=True,capture_output=True)
     
     if mode in ('namenode' , 'datanode') : 
